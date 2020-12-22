@@ -41,3 +41,9 @@ function collect(gen, array) {
         return value;
     }
 }
+
+function repeat(gen) {
+    if (gen() !== undefined) {
+        return repeat(gen);
+    }
+}
