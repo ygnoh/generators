@@ -63,3 +63,13 @@ function harvest(gen) {
 }
 
 console.log(harvest(integer(5, 9)));
+
+function limit(gen ,count = 1) {
+    return function(...args) {
+        if (count >= 1) {
+            count -= 1;
+
+            return gen(...args);
+        }
+    }
+}
