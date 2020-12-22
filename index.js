@@ -47,3 +47,9 @@ function repeat(gen) {
         return repeat(gen);
     }
 }
+
+const arr = [];
+
+repeat(collect(integer(0, 7), arr));
+
+console.log(arr);
