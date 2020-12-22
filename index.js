@@ -89,3 +89,22 @@ function filter(gen, predicate) {
 const thirds = harvest(filter(integer(0, 10), n => n % 3 === 0));
 
 console.log(thirds);
+
+function concat(...gens) {
+    const next = element(gens);
+    let gen = next();
+
+    return function concatGenerator(...args) {
+        if (gen !== undefined) {
+            const value = gen(...args);
+
+            if (value === undefined) {
+                gen = next();
+
+                return concatGenerator(...args);
+            }
+
+            return value;
+        }
+    }
+}
