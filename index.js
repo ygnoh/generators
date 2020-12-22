@@ -53,3 +53,13 @@ const arr = [];
 repeat(collect(integer(0, 7), arr));
 
 console.log(arr);
+
+function harvest(gen) {
+    const arr = [];
+
+    repeat(collect(gen, arr));
+
+    return arr;
+}
+
+console.log(harvest(integer(5, 9)));
