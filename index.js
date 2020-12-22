@@ -114,3 +114,7 @@ function join(func, ...gens) {
         return func(...gens.map(g => g()));
     };
 }
+
+function map(arr, func) {
+    return harvest(join(func, element(arr)));
+}
