@@ -11,7 +11,7 @@ function integer(from = 0, to = Number.MAX_SAFE_INTEGER, step = 1) {
 }
 
 function element(array, gen = integer(0, array.length)) {
-    return function elementGenerator(...args) {
+    return function(...args) {
         const idx = gen(...args);
 
         if (idx !== undefined) {
@@ -21,7 +21,7 @@ function element(array, gen = integer(0, array.length)) {
 }
 
 function property(object, gen = element(Object.keys(object))) {
-    return function propertyGenerator(...args) {
+    return function(...args) {
         const key = gen(...args);
 
         if (key !== undefined) {
@@ -31,7 +31,7 @@ function property(object, gen = element(Object.keys(object))) {
 }
 
 function collect(gen, array) {
-    return function collectGenerator(...args) {
+    return function(...args) {
         const value = gen(...args);
 
         if (value !== undefined) {
