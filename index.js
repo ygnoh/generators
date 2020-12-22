@@ -19,3 +19,13 @@ function element(array, gen = integer(0, array.length)) {
         }
     }
 }
+
+function property(object, gen = element(Object.keys(object))) {
+    return function propertyGenerator(...args) {
+        const key = gen(...args);
+
+        if (key !== undefined) {
+            return [key, object[key]];
+        }
+    }
+}
