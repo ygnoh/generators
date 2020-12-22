@@ -118,3 +118,20 @@ function join(func, ...gens) {
 function map(arr, func) {
     return harvest(join(func, element(arr)));
 }
+
+function objectify(...names) {
+    return function(...values) {
+        const obj = Object.create(null);
+
+        names.forEach((name, idx) => {
+            obj[name] = values[idx];
+        });
+
+        return obj;
+    };
+}
+
+const gen = objectify("n1", "n2");
+
+console.log(gen("v1", "v2"));
+
