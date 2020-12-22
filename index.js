@@ -108,3 +108,9 @@ function concat(...gens) {
         }
     }
 }
+
+function join(func, ...gens) {
+    return function() {
+        return func(...gens.map(g => g()));
+    };
+}
