@@ -73,3 +73,19 @@ function limit(gen ,count = 1) {
         }
     }
 }
+
+function filter(gen, predicate) {
+    return function filterGenerator(...args) {
+        const value = gen(...args);
+
+        if (value !== undefined && !predicate(value)) {
+            return filterGenerator(...args);
+        }
+
+        return value;
+    }
+}
+
+const thirds = harvest(filter(integer(0, 10), n => n % 3 === 0));
+
+console.log(thirds);
