@@ -29,3 +29,15 @@ function property(object, gen = element(Object.keys(object))) {
         }
     }
 }
+
+function collect(gen, array) {
+    return function collectGenerator(...args) {
+        const value = gen(...args);
+
+        if (value !== undefined) {
+            array.push(value);
+        }
+
+        return value;
+    }
+}
